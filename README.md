@@ -1,89 +1,234 @@
-# 🍽️ CraveJet - Food Ordering Application
+# 🍔 CraveJet — Full-Stack Food Ordering Platform
 
-A full-stack food ordering application with user authentication, payment processing, and admin panel management. Built with React, Node.js, and MongoDB.
+**CraveJet** is a full-stack food ordering platform built with the **MERN stack**, providing a complete food ordering experience with authentication, cart management, online payments, real-time order tracking, and an administrative dashboard.
+
+The platform is designed with a modular architecture to separate customer, restaurant/order management, and administrative workflows.
+
+---
 
 
-
-
+---
 
 ## ✨ Features
 
-### 🍕 User Features
-- **Browse Menu**: Explore dishes by categories (Salad, Rolls, Deserts, Sandwich, Cake, Pure Veg, Pasta, Noodles)
-- **Shopping Cart**: Add/remove items with real-time cart management
-- **User Authentication**: Secure login/signup with JWT tokens
-- **Order Placement**: Complete order flow with address collection
-- **Payment Integration**: Stripe payment gateway for secure transactions
-- **Order Tracking**: View order history and status updates
-- **Responsive Design**: Mobile-friendly interface
+### 👤 User Features
 
-### 🔧 Admin Panel Features
-- **Menu Management**: Add, edit, and remove food items
-- **Order Management**: View all orders and update status
-- **Image Upload**: Upload food images with preview
-- **Category Management**: Organize dishes by categories
-- **Real-time Updates**: Instant status updates with toast notifications
+* User registration and login
+* JWT-based authentication
+* Browse available food items
+* Add/remove items from cart
+* Update item quantities
+* Place food orders
+* Secure checkout
+* Stripe payment integration
+* View order history
+* Real-time order status tracking
 
-### 🛡️ Security Features
-- **JWT Authentication**: Secure user sessions
-- **Password Hashing**: Bcrypt encryption for user passwords
-- **Input Validation**: Server-side validation for all inputs
-- **CORS Protection**: Cross-origin resource sharing security
+### 🛒 Cart & Ordering
 
-## 🚀 Tech Stack
+* Dynamic shopping cart
+* Quantity management
+* Automatic order total calculation
+* Checkout workflow
+* Order creation and management
+* Order status updates
 
-### Frontend
-- **React 18** - User interface library
-- **React Router DOM** - Client-side routing
-- **Axios** - HTTP client for API calls
-- **Vite** - Build tool and development server
-- **CSS3** - Styling and responsive design
+### 💳 Payment
 
-### Backend
-- **Node.js** - Runtime environment
-- **Express.js** - Web application framework
-- **MongoDB** - NoSQL database
-- **Mongoose** - MongoDB object modeling
-- **JWT** - JSON Web Token authentication
-- **Bcrypt** - Password hashing
-- **Multer** - File upload handling
-- **Stripe** - Payment processing
-- **CORS** - Cross-origin resource sharing
+* Integrated **Stripe Payment API**
+* End-to-end checkout flow
+* Payment status handling
+* Tested with **50+ test transactions**
+* Secure server-side payment processing
 
-### Admin Panel
-- **React 18** - Admin interface
-- **React Router DOM** - Admin routing
-- **React Toastify** - Toast notifications
-- **Axios** - API communication
+### 📍 Real-Time Order Tracking
 
-## 🛠️ Installation & Setup
+Order status updates are delivered in real time using **Socket.IO**.
 
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB Atlas account
-- Stripe account for payment processing
+Example workflow:
 
-### Environment Variables
-
-Create `.env` file in the backend directory:
-
-```env
-ATLASDB_URL=your_mongodb_atlas_connection_string
-STRIPE_SECRET_KEY=your_stripe_secret_key
-JWT_SECRET=your_jwt_secret_key
+```text
+Order Placed
+     ↓
+Order Confirmed
+     ↓
+Food Preparing
+     ↓
+Out for Delivery
+     ↓
+Delivered
 ```
 
-### Backend Setup
+### 🔐 Authentication & Authorization
+
+* JWT-based authentication
+* Protected API routes
+* Role-based access control
+* Secure user sessions
+* Password hashing
+
+### 🛠️ Admin Dashboard
+
+The admin panel provides centralized management for:
+
+* Food items
+* Orders
+* Users
+* Order status
+* Food availability
+* Platform operations
+
+---
+
+# 🏗️ System Architecture
+
+```text
+                         ┌──────────────────┐
+                         │      Client      │
+                         │   React / Vite   │
+                         └────────┬─────────┘
+                                  │
+                                  │ REST API
+                                  ▼
+                         ┌──────────────────┐
+                         │    Node.js +     │
+                         │     Express      │
+                         └───────┬───┬──────┘
+                                 │   │
+                    ┌────────────┘   └─────────────┐
+                    ▼                              ▼
+             ┌──────────────┐              ┌──────────────┐
+             │   MongoDB    │              │    Stripe    │
+             │   Database   │              │   Payments   │
+             └──────────────┘              └──────────────┘
+                                      
+                         ┌──────────────────┐
+                         │    Socket.IO     │
+                         │ Real-time Orders │
+                         └──────────────────┘
+
+                         ┌──────────────────┐
+                         │  Admin Dashboard │
+                         │      React       │
+                         └──────────────────┘
+```
+
+---
+
+# 🧰 Tech Stack
+
+## Frontend
+
+* React.js
+* JavaScript
+* HTML5
+* CSS3
+* Vite
+
+## Backend
+
+* Node.js
+* Express.js
+* REST APIs
+* JWT Authentication
+* bcrypt
+
+## Database
+
+* MongoDB
+* Mongoose
+
+## Real-Time Communication
+
+* Socket.IO
+
+## Payment
+
+* Stripe API
+
+## Development Tools
+
+* Git
+* GitHub
+* npm
+* Postman
+
+---
+
+# 📂 Project Structure
+
+```text
+CraveJet/
+│
+├── admin/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── config/
+│   ├── server.js
+│   └── package.json
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/rai8896/CraveJet.git
+```
+
+Navigate into the project:
+
+```bash
+cd CraveJet
+```
+
+---
+
+## 2. Backend Setup
 
 ```bash
 cd backend
 npm install
+```
+
+Create a `.env` file inside the `backend` directory:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
+
+Start the backend:
+
+```bash
 npm run server
 ```
 
-Server will start on `http://localhost:4000`
+The backend server will start on the configured port.
 
-### Frontend Setup
+---
+
+## 3. Frontend Setup
+
+Open a new terminal:
 
 ```bash
 cd frontend
@@ -91,9 +236,13 @@ npm install
 npm run dev
 ```
 
-Frontend will start on `http://localhost:5173`
+Open the local URL provided by Vite.
 
-### Admin Panel Setup
+---
+
+## 4. Admin Panel Setup
+
+Open another terminal:
 
 ```bash
 cd admin
@@ -101,81 +250,204 @@ npm install
 npm run dev
 ```
 
-Admin panel will start on `http://localhost:5174`
-
-## 📱 Key Features in Detail
-
-### User Authentication
-- Secure JWT-based authentication
-- Password hashing with bcrypt
-- Protected routes for authenticated users
-- Session management
-
-### Shopping Cart
-- Real-time cart updates
-- Persistent cart data in user profile
-- Add/remove items functionality
-- Cart total calculation
-
-### Payment Processing
-- Stripe Checkout integration
-- Secure payment flow
-- Order verification system
-- Payment status tracking
-
-### Admin Management
-- CRUD operations for food items
-- Image upload with preview
-- Order status management
-- Real-time notifications
-
-## 🔄 API Endpoints
-
-### Authentication
-- `POST /api/user/signup` - User registration
-- `POST /api/user/login` - User login
-
-### Food Management
-- `GET /api/food/list` - Get all food items
-- `POST /api/food/add` - Add new food item (Admin)
-- `POST /api/food/remove` - Remove food item (Admin)
-
-### Cart Operations
-- `POST /api/cart/add` - Add item to cart
-- `POST /api/cart/remove` - Remove item from cart
-- `GET /api/cart/get` - Get user cart
-
-### Order Management
-- `POST /api/order/place` - Place new order
-- `POST /api/order/verify` - Verify payment
-- `POST /api/order/userorders` - Get user orders
-- `GET /api/order/list` - Get all orders (Admin)
-- `POST /api/order/status` - Update order status (Admin)
-
-## 🎨 UI/UX Features
-
-- **Modern Design**: Clean and intuitive interface
-- **Responsive Layout**: Works on all device sizes
-- **Loading States**: Smooth user experience
-- **Error Handling**: User-friendly error messages
-- **Toast Notifications**: Real-time feedback
-- **Image Optimization**: Fast loading food images
-
-## 🔒 Security Measures
-
-- **JWT Authentication**: Secure user sessions
-- **Password Encryption**: Bcrypt hashing
-- **Input Validation**: Server-side validation
-- **CORS Protection**: Secure cross-origin requests
-- **Environment Variables**: Secure configuration management
-
-## 🙏 Acknowledgments
-
-- [Stripe](https://stripe.com/) for payment processing
-- [MongoDB Atlas](https://www.mongodb.com/atlas) for database hosting
-- [React](https://reactjs.org/) for the frontend framework
-- [Express.js](https://expressjs.com/) for the backend framework
+Open the admin dashboard using the URL provided by Vite.
 
 ---
 
-⭐ **Star this repository if you find it helpful!** 
+# 🔑 Environment Variables
+
+Never commit your `.env` file to GitHub.
+
+Example:
+
+```env
+MONGO_URI=
+JWT_SECRET=
+STRIPE_SECRET_KEY=
+```
+
+The actual credentials should remain private.
+
+---
+
+# 🔄 Order Flow
+
+```text
+User
+ │
+ ├── Login/Register
+ │
+ ▼
+Browse Food
+ │
+ ▼
+Add to Cart
+ │
+ ▼
+Checkout
+ │
+ ▼
+Stripe Payment
+ │
+ ▼
+Create Order
+ │
+ ▼
+Admin Receives Order
+ │
+ ▼
+Admin Updates Status
+ │
+ ▼
+Socket.IO
+ │
+ ▼
+User Receives Real-Time Update
+```
+
+---
+
+# 🔒 Security
+
+The application implements:
+
+* JWT authentication
+* Protected routes
+* Role-based authorization
+* Password hashing
+* Environment-based secret management
+* Server-side payment verification
+* API access control
+
+---
+
+# 💳 Stripe Testing
+
+Stripe test mode was used during development.
+
+The checkout workflow was validated through **50+ test transactions** to verify:
+
+* Payment initiation
+* Successful payment
+* Failed payment handling
+* Order creation
+* Payment status synchronization
+
+No real payment information is required for development/testing.
+
+---
+
+# 📸 Screenshots
+
+Add screenshots of your application here.
+
+### 🏠 Customer Homepage
+
+```text
+Add screenshot here
+```
+
+### 🍔 Food Menu
+
+```text
+Add screenshot here
+```
+
+### 🛒 Shopping Cart
+
+```text
+Add screenshot here
+```
+
+### 💳 Checkout
+
+```text
+Add screenshot here
+```
+
+### 📦 Order Tracking
+
+```text
+Add screenshot here
+```
+
+### 🛠️ Admin Dashboard
+
+```text
+Add screenshot here
+```
+
+---
+
+# 📈 Future Improvements
+
+Planned improvements include:
+
+* Redis caching
+* API rate limiting
+* Order idempotency
+* Background job processing
+* Email/SMS notifications
+* Restaurant management
+* Advanced search and filtering
+* Recommendation system
+* Dockerized deployment
+* Horizontal backend scaling
+* Monitoring and logging
+
+---
+
+# 🎯 Key Engineering Concepts
+
+This project demonstrates practical implementation of:
+
+* Full-stack MERN development
+* RESTful API design
+* Authentication & authorization
+* Database modeling
+* Payment integration
+* Real-time communication
+* Modular backend architecture
+* Admin workflows
+* Secure environment configuration
+* Client-server communication
+* Error handling
+* Production-oriented application design
+
+---
+
+# 🧪 Testing
+
+The application was manually tested across:
+
+* User authentication
+* Cart operations
+* Order creation
+* Payment processing
+* Order status updates
+* Admin operations
+* Real-time tracking
+
+Stripe checkout was validated using **50+ test transactions**.
+
+---
+
+# 👨‍💻 Author
+
+## Manish Rai
+
+B.Tech Computer Science Engineer | M.Tech CSE (AI)
+
+Interested in:
+
+* Software Development
+* Backend Engineering
+* Distributed Systems
+* Artificial Intelligence
+
+
+---
+
+## 📄 License
+
+This project is intended for educational and portfolio purposes.
