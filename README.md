@@ -2,8 +2,8 @@
 
 A full-stack food ordering application with user authentication, payment processing, and admin panel management. Built with React, Node.js, and MongoDB.
 
-## 🚀 Live Demo  
-[Cravejet](https://cravejet-frontend.onrender.com/)
+
+
 
 
 ## ✨ Features
